@@ -10,8 +10,10 @@ const Navbar = ({auth: {isAuthenticated, loading}, logout}) => {
   const authLinks = (
     <ul>
         <li>
-          <a onClick ={logout} href="#!">
-          <i className="fas fa-external-link-alt"></i>{' '}
+          <Link to="/profile">NAME</Link>
+          <Link to="/newparty">Add party</Link>
+          <Link to="/myparties">My parties</Link>
+          <a onClick ={logout} href="/">
             <span className="hide-sm">Log Out</span></a>
         </li> 
     </ul>
@@ -21,10 +23,7 @@ const Navbar = ({auth: {isAuthenticated, loading}, logout}) => {
     const guestLinks = (
       <ul>
         <li>
-          <a href="#!">Developers</a>
-          </li>
-        <li>
-          <Link to="/register">Register</Link>
+          <Link to="/register">Sign Up</Link>
           </li>
         <li>
           <Link to="/login">Login</Link>
@@ -35,7 +34,7 @@ const Navbar = ({auth: {isAuthenticated, loading}, logout}) => {
   return (
     <nav className="navbar bg-dark">
       <h1>
-        <Link to="/"><i className="fas fa-code"></i> DevConnector</Link>
+        <Link to="/"> App-Plan-Party</Link>
       </h1>
   { !loading && (<Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>) }
     </nav>
