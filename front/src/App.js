@@ -16,6 +16,9 @@ import store from './store';
 import setAuthToken from './utils/setAuthToken'
 import {loadUser} from './actions/auth'
 import MyParties from './components/MyParties/MyParties';
+import PartyRoom from './components/PartyRoom/PartyRoom';
+import EditPartyForm from './components/EditPartyForm/EditPartyForm';
+
 
 
 
@@ -28,28 +31,30 @@ const App = () => {
         store.dispatch(loadUser());
     }, []);
 
-    return (
-        <Provider store={store}>
-            <Router>
-                <Fragment>
-                    <Navbar/>
-                    <Route exact path='/' component={Landing}/>
-                    <section className="container">
-                        <Alert/>
-                        <Switch>
-                            <Route exact path="/register" component={Register}/>
-                            <Route exact path="/login" component={Login}/>
-                            <Route exact path="/newparty" component={NewParty}/>
-                            <Route exact path="/profile" component={UserProfile}/>
-                            <PrivateRoute exact path="/myparties" component={MyParties}/>
-                            <PrivateRoute exact path="/dashboard" component={Dashboard}/>
-                        </Switch>
-                    </section>
-                </Fragment>
-            </Router>
-        </Provider>
-    )
 
+  return(
+    <Provider store={store}>
+    <Router>
+    <Fragment>
+      <Navbar/>
+      <Route exact path='/' component={Landing}/>
+      <section className="container">
+        <Alert/>
+        <Switch>
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/newparty" component={NewParty}/>
+          <Route exact path="/profile" component={UserProfile}/>
+          <PrivateRoute exact path="/myparties" component={MyParties}/>
+          <PrivateRoute exact path="/myparties/:id" component={PartyRoom}/>
+          <PrivateRoute exact path="/editform/:id" component={EditPartyForm}/>
+          <PrivateRoute exact path="/dashboard" component={Dashboard} />
+        </Switch>
+      </section>
+    </Fragment>
+    </Router>
+  </Provider>
+  )
 };
 
 export default App;

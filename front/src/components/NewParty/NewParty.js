@@ -32,7 +32,7 @@ export default function NewParty() {
     })
     .then(res => {
       if(res.status === 200){
-        history.push('/')
+        history.push('/myparties')
       }
     })
   }
@@ -42,7 +42,7 @@ export default function NewParty() {
       <Fragment>
         <h1 className="large text-primary">Add Party</h1>
         <p className="lead">
-          <i className="fas fa-user"></i> Create Your Account
+          <i className="fas fa-user"></i> Create Your Party
         </p>
         <form className="form" onSubmit={submitHandler}>
           <div className="form-group">
