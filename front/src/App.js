@@ -15,6 +15,8 @@ import store from './store';
 import setAuthToken from './utils/setAuthToken'
 import {loadUser} from './actions/auth'
 import MyParties from './components/MyParties/MyParties';
+import PartyRoom from './components/PartyRoom/PartyRoom';
+import EditPartyForm from './components/EditPartyForm/EditPartyForm';
 
 
 if(localStorage.token) {
@@ -39,6 +41,8 @@ const App = () => {
           <Route exact path="/login" component={Login} />
           <Route exact path="/newparty" component={NewParty}/>
           <PrivateRoute exact path="/myparties" component={MyParties}/>
+          <PrivateRoute exact path="/myparties/:id" component={PartyRoom}/>
+          <PrivateRoute exact path="/editform/:id" component={EditPartyForm}/>
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
         </Switch>
       </section>
