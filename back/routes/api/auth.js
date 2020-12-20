@@ -15,6 +15,11 @@ const User = require('../../models/User')
 router.get('/', auth, async (req,res)=> {
   try{
     const user = await User.findById(req.user.id).select('-password');
+
+    // localStorage.setItem('userName', JSON.stringify(user))
+    // const raw = localStorage.getItem('userName')
+    // const user1 = JSON.parse(raw)
+    // console.log(user1)
     res.json(user)
   }catch(err){
     console.error(err.message)

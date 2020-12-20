@@ -1,16 +1,17 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
-import {connect} from 'react-redux';
+import {connect, useSelector} from 'react-redux';
 import PropTypes from 'prop-types';
 import {logout} from '../../actions/auth'
-import { Fragment } from 'react';
+import {Fragment} from 'react';
 
 const Navbar = ({auth: {isAuthenticated, loading}, logout}) => {
+    const user = useSelector(state => state.auth.user)
 
   const authLinks = (
     <ul>
         <li>
-          <Link to="/profile">NAME</Link>
+          <Link to="/profile">{user && user.name}</Link>
           <Link to="/newparty">Add party</Link>
           <Link to="/myparties">My parties</Link>
           <a onClick ={logout} href="/">
@@ -42,12 +43,12 @@ const Navbar = ({auth: {isAuthenticated, loading}, logout}) => {
 }
 
 Navbar.propTypes = {
-  logout: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
+    logout: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = state => ({
-  auth: state.auth
+    auth: state.auth
 });
 
 export default connect(mapStateToProps, {logout})(Navbar);
