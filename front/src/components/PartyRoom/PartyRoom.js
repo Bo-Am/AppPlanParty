@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom'
 
 export default function PartyRoom() {
+  // const userId = useSelector(user => user.auth.user._id)
+
+  const user = useSelector(user => user.auth.user)
 
   const [party, setParty] = useState([])
 
@@ -23,18 +27,31 @@ export default function PartyRoom() {
     .then(res => history.push('/myparties'))
   }
 
-  
 
 
-  return (
-    <>
+  const author = party.author
+
+  const buttons = 
+  <>
+   <button className="btn btn-primary" onClick={deleteParty}>Delete Party</button>
+   <button className="btn btn-primary" onClick={() => history.push(`/editform/${id}`)}>Edit Party</button><br/>
+    <div>
+   <input/>
+   <button className="btn btn-primary">Add member</button>
+   </div>
+  </>
+
+  const partyData = 
+  <>
       <div>{ party.partyName }</div>
       <div>{ party.partyPlace }</div>
       <div>{ party.partyDate }</div>
       <div>{ party.partyTime }</div>
-      <button className="btn btn-primary" onClick={deleteParty}>Delete Party</button>
-      <button className="btn btn-primary" onClick={() => history.push(`/editform/${id}`)}>Edit Party</button>
-
+  </>
+  return (
+    <>
+    {user && partyData}
+    {user && (author === user._id)? buttons : null}
     </>
-  )
+)
 }
