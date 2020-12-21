@@ -2,24 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="187779b5-8a54-45f5-9f37-cfb511411841" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/back/models/Party.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/routes/myParties.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/routes/parties.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/components/MyParties/MyParties.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/components/NewParty/NewParty.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/components/UserProfile/api.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/img/party.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/reducers/userPhotoReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/back/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/back/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/components/UserProfile/UserProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/UserProfile/UserProfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/layout/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/layout/Navbar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/reducers/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,7 +45,8 @@
       <option name="presentableId" value="Default" />
       <updated>1608274496901</updated>
       <workItem from="1608274502916" duration="22026000" />
-      <workItem from="1608452660781" duration="19972000" />
+      <workItem from="1608452660781" duration="22839000" />
+      <workItem from="1608536926289" duration="16266000" />
     </task>
     <servers />
   </component>
