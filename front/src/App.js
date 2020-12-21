@@ -10,6 +10,7 @@ import Alert from './components/layout/Alert';
 import Dashboard from './components/Dashboard/Dashboard';
 import PrivateRoute from './components/routing/PrivateRoute';
 import UserProfile from "./components/UserProfile/UserProfile";
+import ChatPage from "./components/ChatPage/ChatPage";
 // Redux
 import {Provider} from 'react-redux';
 import store from './store';
@@ -46,6 +47,7 @@ const App = () => {
           <Route exact path="/newparty" component={NewParty}/>
           <Route exact path="/profile" component={UserProfile}/>
           <PrivateRoute exact path="/myparties" component={MyParties}/>
+          <PrivateRoute exact path="/chat" component={ChatPage}/>
           <PrivateRoute exact path="/myparties/:id" component={PartyRoom}/>
           <PrivateRoute exact path="/editform/:id" component={EditPartyForm}/>
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
