@@ -1,6 +1,5 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import { useSelector } from "react-redux";
 import { upload } from "./api";
 import { useHistory, useParams } from "react-router-dom";
 import AddFriend from "../AddFriend/AddFriend";
@@ -39,6 +38,7 @@ const UserProfile = () => {
 
     return (
         <div>
+            <AddFriend/>
            Name: {user && user.name}<br/>
            Mail: {user && user.email}<br/>
           <button onClick={() => user._id &&  history.push(`editprofile/${user._id}`)} className="btn btn-primary">Edit profile</button>
@@ -59,8 +59,8 @@ const UserProfile = () => {
                         )}
                 </div>
                     <button onClick={() => localStorage.removeItem('photo')}>Remove image</button>
-            </div>
-        </div>
+
+
         {imgPreview && (
           <button
             className="btn btn-primary"
