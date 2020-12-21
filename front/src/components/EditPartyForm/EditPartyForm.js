@@ -51,19 +51,19 @@ export default function EditPartyForm() {
         </p>
         <form className="form" onSubmit={submitHandler}>
           <div className="form-group">
-            <input type="text" defaultValue={party.partyName} name="partyName" />
+            <input required type="text" defaultValue={party.partyName} name="partyName" />
           </div>
           <div className="form-group">
-            <input type="text" defaultValue={party.partyPlace} name="partyPlace" />
+            <input required type="text" defaultValue={party.partyPlace} name="partyPlace" />
           </div>
           <div className="form-group">
-            <input type="date" defaultValue={party.partyDate} name="partyDate" />
+            <input required type="date" defaultValue={party.partyDate} name="partyDate" />
           </div>
           <div className="form-group">
-            <input type="time" defaultValue={party.partyTime} name="partyTime" />
+            <input required type="time" defaultValue={party.partyTime} name="partyTime" />
           </div>
           <div className="form-group">
-            <input type="number" min="0" step="500" defaultValue={party.partyPrice} name="partyPrice"/>
+            <input required type="number" min="0" step="500" defaultValue={party.partyPrice} name="partyPrice"/>
           </div>
           <input type="submit" className="btn btn-primary" value="Edit party"/>
         </form>

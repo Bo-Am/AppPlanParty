@@ -1,10 +1,15 @@
-import React from 'react';
+import React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {upload} from "./api";
+import { useSelector } from "react-redux";
+import { upload } from "./api";
+import { useHistory, useParams } from "react-router-dom";
+import AddFriend from "../AddFriend/AddFriend";
 
 
 
 const UserProfile = () => {
+
+    const history = useHistory()
     const user = useSelector(state => state.auth.user)
     const photo = useSelector(state => state)
 
@@ -36,7 +41,7 @@ const UserProfile = () => {
         <div>
            Name: {user && user.name}<br/>
            Mail: {user && user.email}<br/>
-
+          <button onClick={() => user._id &&  history.push(`editprofile/${user._id}`)} className="btn btn-primary">Edit profile</button>
            {localStorage.getItem('photo') ? <img className="imgPreview" src={ JSON.parse( localStorage.getItem('photo') )} /> : null}
             <div className="container">
                 {error && <p className="errorMsg">File not supported</p>}
@@ -56,7 +61,18 @@ const UserProfile = () => {
                     <button onClick={() => localStorage.removeItem('photo')}>Remove image</button>
             </div>
         </div>
-    );
+        {imgPreview && (
+          <button
+            className="btn btn-primary"
+            onClick={() => setImgPreview(null)}
+          >
+            Remove image
+          </button>
+        )}
+      </div>
+    </div>
+   
+  );
 };
 
 export default UserProfile;

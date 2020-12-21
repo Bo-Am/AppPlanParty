@@ -18,6 +18,7 @@ import {loadUser} from './actions/auth'
 import MyParties from './components/MyParties/MyParties';
 import PartyRoom from './components/PartyRoom/PartyRoom';
 import EditPartyForm from './components/EditPartyForm/EditPartyForm';
+import EditProfile from './components/EditProfile/EditProfile';
 
 
 
@@ -49,6 +50,7 @@ const App = () => {
           <PrivateRoute exact path="/myparties/:id" component={PartyRoom}/>
           <PrivateRoute exact path="/editform/:id" component={EditPartyForm}/>
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
+          <PrivateRoute exact path="/editprofile/:id" component={EditProfile} />
         </Switch>
       </section>
     </Fragment>
