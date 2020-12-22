@@ -4,7 +4,7 @@ import {REGISTER_SUCCESS, REGISTER_FAIL, USER_LOADED, AUTH_ERROR, LOGIN_FAIL, LO
 import setAuthToken from '../utils/setAuthToken'
 
 //Load User
-export const loadUser = ()=> async dispatch => {
+export const loadUser = ()=> async (dispatch) => {
   if(localStorage.token) {
     setAuthToken(localStorage.token)
   }
