@@ -32,17 +32,16 @@ const UserProfile = () => {
   };
   return (
     <div>
-      <AddFriend/>
 
       Name: {user && user.name}
       <br />
       Mail: {user && user.email}
       <br />
-      <button onClick={() => user._id &&  history.push(`editprofile/${user._id}`)} className="btn btn-primary">Edit profile</button>
+      <button id="editProf" onClick={() => user._id &&  history.push(`editprofile/${user._id}`)} className="btn btn-primary">Edit profile</button>
 
       <div className="container">
         {error && <p className="errorMsg">File not supported</p>}
-        <div
+        <div 
           className="imgPreview"
           style={{
             background: imgPreview

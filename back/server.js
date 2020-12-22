@@ -27,6 +27,8 @@ app.use('/api/partyroom', require('./routes/partyRoom'))
 app.use('/api/editparty', require('./routes/editParty'))
 app.use('/api/editprofile', require('./routes/editProfile'))
 app.use('/api/addfriend', require('./routes/addFriend'))
+app.use('/api/addmember', require('./routes/addMember'))
+
 
 
 
