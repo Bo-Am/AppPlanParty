@@ -10,14 +10,14 @@ const app = express();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server, {
   cors: {
-    origin: "http://localhost:5000",
+    origin: "http://localhost:3000",
     methods: ["GET", "POST"]
   }
 })
 
 
 //Connect Database
-connectDB();
+let connect = connectDB();
 
 //init middleware
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -48,10 +48,10 @@ app.post("/api/chat/uploadfiles", (req, res) => {
 });
 // подключаем socket
 io.on("connection", socket => {
-
-  socket.on("Input Chat Message", msg => {
-
-    connect.then(db => {
+  console.log('>>');
+  socket.emit("Output Chat Message", 'doc');
+  socket.on("Input Chat Message", async(msg) => {
+  
       try {
           let chat = new Chat({ message: msg.chatMessage, sender:msg.userId, type: msg.type })
 
@@ -69,7 +69,6 @@ io.on("connection", socket => {
       } catch (error) {
         console.error(error);
       }
-    })
    })
 
 })

@@ -7,7 +7,7 @@ const config = require('config')
 const bcrypt = require('bcryptjs')
 
 
-const User = require('../../models/User')
+const {User} = require('../../models/User')
 
 //@route  GET api/auth
 //@desc   Test route

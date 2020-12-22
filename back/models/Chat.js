@@ -7,12 +7,12 @@ const chatSchema = mongoose.Schema({
         },
     sender: {
         type: Schema.Types.ObjectId,
-        ref: 'User' 
+        ref: 'user' 
     },
     type: {
         type: String
     },
 }, { timestamps: true });
 
-const Chat = mongoose.model('Chat', chatSchema);
+const Chat = mongoose.model('chat', chatSchema);
 module.exports = { Chat }
