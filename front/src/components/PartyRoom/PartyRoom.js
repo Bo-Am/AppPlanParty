@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux';
+import { useSelector, useStore } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom'
 
 export default function PartyRoom() {
@@ -20,25 +20,55 @@ export default function PartyRoom() {
     }, [])
 
   const deleteParty = () => {
-   return fetch(`/api/partyRoom/${id}`, {
+   return fetch(`/api/partyroom/${id}`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json'}
     })
     .then(res => history.push('/myparties'))
   }
+  const addMember = (e) => {
+    e.preventDefault()
+    const { email : {value : email}} = e.target
+     fetch('/api/addmember', {
+       method: 'PUT',
+       headers: {'Content-Type' : 'application/json'},
+       body: JSON.stringify({
+         email,
+         id
+       })
+     })
+     .then(res => res.json())
+     .then(name => console.log(name))
+  }
 
+  const [partyMembers, setPartyMembers] = useState()
 
+  useEffect(() => {
+    fetch(`/api/addmember/${id}`)
+    .then(res => res.json())
+    .then(data => setPartyMembers(data))
+  }, [])
+
+  console.log(partyMembers);
 
   const author = party.author
 
   const buttons = 
   <>
-   <button className="btn btn-primary" onClick={deleteParty}>Delete Party</button>
-   <button className="btn btn-primary" onClick={() => history.push(`/editform/${id}`)}>Edit Party</button><br/>
+    <button className="btn btn-primary" onClick={deleteParty}>Delete Party</button>
+    <button className="btn btn-primary" onClick={() => history.push(`/editform/${id}`)}>Edit Party</button><br/>
     <div>
-   <input/>
-   <button className="btn btn-primary">Add member</button>
-   </div>
+      <form className="form" onSubmit={addMember}>
+        <div className="form-group">
+          <input placeholder=" enter user email" name="email"/>
+        </div>
+        <div className="form-group">
+          <button className="btn btn-primary" >Add Member</button>
+        </div>
+      </form>
+     
+      
+    </div>
   </>
 
   const partyData = 
@@ -52,6 +82,14 @@ export default function PartyRoom() {
     <>
     {user && partyData}
     {user && (author === user._id)? buttons : null}
+    <div>
+      <p className="lead">
+        Members
+      </p>
+      <ul>
+        {partyMembers?.map((el) =><li>{el.name}</li>  )}
+      </ul>
+      </div>
     </>
 )
 }

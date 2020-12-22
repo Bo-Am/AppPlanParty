@@ -19,6 +19,7 @@ import MyParties from './components/MyParties/MyParties';
 import PartyRoom from './components/PartyRoom/PartyRoom';
 import EditPartyForm from './components/EditPartyForm/EditPartyForm';
 import EditProfile from './components/EditProfile/EditProfile';
+import AddFriend from './components/AddFriend/AddFriend';
 
 
 
@@ -47,6 +48,7 @@ const App = () => {
           <Route exact path="/newparty" component={NewParty}/>
           <Route exact path="/profile" component={UserProfile}/>
           <PrivateRoute exact path="/myparties" component={MyParties}/>
+          <PrivateRoute exact path="/myfriends" component={AddFriend}/>
           <PrivateRoute exact path="/myparties/:id" component={PartyRoom}/>
           <PrivateRoute exact path="/editform/:id" component={EditPartyForm}/>
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
