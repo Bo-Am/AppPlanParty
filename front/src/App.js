@@ -40,6 +40,7 @@ const App = () => {
     <Fragment>
       <Navbar/>
       <Route exact path='/' component={Landing}/>
+      <PrivateRoute exact path="/myparties/:id" component={PartyRoom}/>
       <section className="container">
         <Alert/>
         <Switch>
@@ -49,7 +50,6 @@ const App = () => {
           <Route exact path="/profile" component={UserProfile}/>
           <PrivateRoute exact path="/myparties" component={MyParties}/>
           <PrivateRoute exact path="/myfriends" component={AddFriend}/>
-          <PrivateRoute exact path="/myparties/:id" component={PartyRoom}/>
           <PrivateRoute exact path="/editform/:id" component={EditPartyForm}/>
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
           <PrivateRoute exact path="/editprofile/:id" component={EditProfile} />
