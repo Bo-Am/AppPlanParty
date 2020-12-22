@@ -6,6 +6,7 @@ export default function AddFriend() {
   const [friends, setFriends] = useState()
   
   const id = useSelector(state => state.auth.user._id)
+
   const addFriend = (e) => {
     e.preventDefault()
     const { email : {value : email}} = e.target
