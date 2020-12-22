@@ -3,14 +3,14 @@ import moment from 'moment';
 import { Comment, Tooltip, Avatar } from 'antd';
 
 function ChatCard(props) {
-  console.log(props.message);
+  console.log(props);
     return (
-        <div style={{ width: '100%' }}>
+        <div style={{ width: '50%' }}>
             <Comment
-                author={props.sender.name}
+                author={props.sender.name && props.sender.name}
                 avatar={
                     <Avatar
-                        src={props.sender.image} alt={props.sender.name}
+                        src={props.sender.avatar} alt={props.sender.name}
                     />
                 }
                 content={

@@ -17,7 +17,7 @@ const io = require('socket.io')(server, {
 
 
 //Connect Database
-let connect = connectDB();
+connectDB();
 
 //init middleware
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -49,14 +49,16 @@ app.post("/api/chat/uploadfiles", (req, res) => {
 // подключаем socket
 io.on("connection", socket => {
   console.log('>>');
-  socket.emit("Output Chat Message", 'doc');
+  // socket.emit("Output Chat Message", 'doc');
   socket.on("Input Chat Message", async(msg) => {
-  
+    console.log('Input Chat Message');
+    console.log('>>>>>',msg);
+   
       try {
           let chat = new Chat({ message: msg.chatMessage, sender:msg.userId, type: msg.type })
 
           chat.save((err, doc) => {
-            console.log(doc)
+            // console.log(doc)
             if(err) return res.json({ success: false, err })
 
             Chat.find({ "_id": doc._id })

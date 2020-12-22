@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
-import {Icon, Form, Input, Button, Row, Col} from 'antd';
-import io from "socket.io-client";
+import {Form, Input, Button, Row, Col} from 'antd';
+// import { Icon } from '@ant-design/icons'
+import {io} from "socket.io-client";
 import { connect } from "react-redux";
+// import PropTypes from 'prop-types';
+
 // moment - npm пакет для отображения текущего времени
 import moment from "moment";
 import { getChats, afterPostMessage } from "../../actions/chat_actions"
@@ -16,20 +19,21 @@ export class ChatPage extends Component {
     }
 
     componentDidMount() {
-        let server = "http://localhost:5000";
+      let server = "http://localhost:5000";
 
         this.props.dispatch(getChats());
 
         this.socket = io(server);
 
+        // this.socket.emit("Input Chat Message", 'hola bitch')
         this.socket.on("Output Chat Message", messageFromBackEnd => {
-            console.log(messageFromBackEnd)
             this.props.dispatch(afterPostMessage(messageFromBackEnd));
         })
     }
 
     componentDidUpdate() {
       // метод scrollIntoView прокручивает текущий контейнер родителя, так, чтобы этот элемент, на котором был вызван scrollIntoView был видим пользователю
+   
         this.messagesEnd.scrollIntoView({ behavior: 'smooth' });
     }
 
@@ -40,8 +44,8 @@ export class ChatPage extends Component {
     }
 
     renderCards = () =>
-        this.props.chats.chats
-        && this.props.chats.chats.map((chat) => (
+        this.props.chats
+        && this.props.chats.map((chat) => (
             <ChatCard key={chat._id}  {...chat} />
         ));
 // метод onDrop - это поле, куда можно перетащить файлы для загрузки
@@ -67,9 +71,9 @@ export class ChatPage extends Component {
             .then(response => {
                 if (response.data.success) {
                     let chatMessage = response.data.url;
-                    let userId = this.props.auth.user._id
-                    let userName = this.props.auth.user.name;
-                    let userImage = this.props.auth.user.image;
+                    let userId = this.props.user._id
+                    let userName = this.props.user.name;
+                    let userImage = this.props.user.avatar;
                     let nowTime = moment();
                     let type = "VideoOrImage"
 
@@ -89,9 +93,9 @@ export class ChatPage extends Component {
     submitChatMessage = (e) => {
         e.preventDefault();
         let chatMessage = this.state.chatMessage
-        let userId = this.props.auth.user._id
-        let userName = this.props.auth.user.name;
-        let userImage = this.props.auth.user.image;
+        let userId = this.props.user._id
+        let userName = this.props.user.name;
+        let userImage = this.props.user.avatar;
         let nowTime = moment();
         let type = "Text"
 
@@ -103,7 +107,7 @@ export class ChatPage extends Component {
             nowTime,
             type
         });
-        this.setState({ chatMessage: "" })
+        this.setState(()=>({ chatMessage: "" }))
     }
 
     render() {
@@ -129,9 +133,9 @@ export class ChatPage extends Component {
                     <Row >
                         <Form layout="inline" onSubmit={this.submitChatMessage}>
                             <Col span={18}>
-                                <Input
+                                <Input 
                                     id="message"
-                                    prefix={<Icon type="message" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                    prefix='💬'
                                     placeholder="Come on! Let's start talking!"
                                     type="text"
                                     value={this.state.chatMessage}
@@ -145,7 +149,7 @@ export class ChatPage extends Component {
                                             <div {...getRootProps()}>
                                                 <input {...getInputProps()} />
                                                 <Button>
-                                                    <Icon type="upload" />
+                                                    '📤'
                                                 </Button>
                                             </div>
                                         </section>
@@ -168,8 +172,8 @@ export class ChatPage extends Component {
 
 const mapStateToProps = state => {
     return {
-        user: state.user,
-        chats: state.chat
+        user: state.auth.user,
+        chats: state.chatReducer.chats,
     }
 }
 
