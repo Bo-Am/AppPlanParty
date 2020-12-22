@@ -20,6 +20,7 @@ import PartyRoom from './components/PartyRoom/PartyRoom';
 import EditPartyForm from './components/EditPartyForm/EditPartyForm';
 import EditProfile from './components/EditProfile/EditProfile';
 import AddFriend from './components/AddFriend/AddFriend';
+import Invitation from "./components/Invitation/Invitation";
 
 
 
@@ -53,6 +54,7 @@ const App = () => {
           <PrivateRoute exact path="/editform/:id" component={EditPartyForm}/>
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
           <PrivateRoute exact path="/editprofile/:id" component={EditProfile} />
+          <PrivateRoute exact path="/invitation" component={Invitation} />
         </Switch>
       </section>
     </Fragment>
