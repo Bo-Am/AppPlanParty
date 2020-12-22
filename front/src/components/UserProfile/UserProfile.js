@@ -34,7 +34,6 @@ const UserProfile = () => {
         }
 
     }
-
     return (
         <div>
             <AddFriend/>
@@ -58,7 +57,6 @@ const UserProfile = () => {
                         )}
                 </div>
                     <button onClick={() => localStorage.removeItem('photo')}>Remove image</button>
-
 
         {imgPreview && (
           <button

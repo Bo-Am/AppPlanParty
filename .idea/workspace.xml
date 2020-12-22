@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="187779b5-8a54-45f5-9f37-cfb511411841" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/front/src/components/ContactEmail.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/components/Invitation/Invitation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/models/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/models/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/routes/addMember.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/components/AddFriend/AddFriend.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/AddFriend/AddFriend.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/PartyRoom/PartyRoom.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/PartyRoom/PartyRoom.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/components/UserProfile/UserProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/UserProfile/UserProfile.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/components/layout/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/layout/Navbar.js" afterDir="false" />
     </list>
@@ -51,7 +49,7 @@
       <workItem from="1608274502916" duration="22026000" />
       <workItem from="1608452660781" duration="22839000" />
       <workItem from="1608536926289" duration="19040000" />
-      <workItem from="1608626057425" duration="9163000" />
+      <workItem from="1608626057425" duration="9408000" />
     </task>
     <servers />
   </component>
