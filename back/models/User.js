@@ -20,7 +20,11 @@ const UserSchema = new mongoose.Schema({
   date:{
     type: Date,
     default:Date.now
-  }
+  },
+  friends: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}]
+
 });
 
-module.exports.User = mongoose.model('user', UserSchema)
+
+module.exports = User = mongoose.model('User', UserSchema)
+

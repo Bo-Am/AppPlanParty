@@ -89,6 +89,12 @@ app.use('/api/newparty', require('./routes/parties'))
 app.use('/api/myparties', require('./routes/myParties'))
 app.use('/api/partyroom', require('./routes/partyRoom'))
 app.use('/api/editparty', require('./routes/editParty'))
+app.use('/api/editprofile', require('./routes/editProfile'))
+app.use('/api/addfriend', require('./routes/addFriend'))
+app.use('/api/addmember', require('./routes/addMember'))
+
+
+
 
 
 const PORT = process.env.PORT || 5000
