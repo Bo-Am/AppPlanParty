@@ -12,7 +12,12 @@ const chatSchema = mongoose.Schema({
     type: {
         type: String
     },
+    party: {
+      type: Schema.Types.ObjectId,
+        ref: 'party'
+  }
 }, { timestamps: true });
 
 const Chat = mongoose.model('chat', chatSchema);
 module.exports = {Chat}
+ 

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useStore } from "react-redux";
 import { Link, useHistory, useParams,useRouteMatch } from "react-router-dom";
-import { ChatPage } from "../ChatPage/ChatPage"
-const PartyRoom = (props)=> {
+import  ChatPage  from "../ChatPage/ChatPage"
+const PartyRoom = ()=> {
   // const userId = useSelector(user => user.auth.user._id)
 
   const user = useSelector((user) => user.auth.user);
@@ -33,7 +33,7 @@ const PartyRoom = (props)=> {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, id }),
-    }).then((res) => history.push(`/myparties/${id}`));
+    }).then((res) => history.push(`/myparties/${id}/chat`));
   };
 
   const addMember = (e) => {
@@ -61,6 +61,10 @@ const PartyRoom = (props)=> {
       .then((data) => setPartyMembers(data));
   }, []);
 
+
+
+
+  
   const author = party.author;
 
   const buttons = (
@@ -139,6 +143,7 @@ const PartyRoom = (props)=> {
           {user && partyData}
           {user && author === user._id ? buttons : null}
         </div>
+        <ChatPage/>
         <div className="membersStyle">
           {user && author === user._id ? addMemberInput : null}
 

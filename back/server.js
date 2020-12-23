@@ -5,6 +5,7 @@ const {Chat} = require('./models/Chat');
 const multer = require('multer');
 const fs = require('fs');
 const bodyParser = require('body-parser');
+const Party = require('./models/Party');
 
 const app = express();
 const server = require('http').createServer(app);
@@ -47,32 +48,64 @@ app.post("/api/chat/uploadfiles", (req, res) => {
   })
 });
 // подключаем socket
-io.on("connection", socket => {
-  console.log('>>');
-  socket.on("Input Chat Message", async(msg) => {
-    console.log('Input Chat Message');
-    console.log('>>>>>',msg);
+// io.on("connection", socket => {
+//   console.log('>>');
+//   socket.on("CONNECT_ROOM",  room  => {
+//     socket.join(room);
+//     console.log(`Подключен к ${room}`);
+//   });
+//   socket.on("Input Chat Message", async(msg) => {
+//     console.log('Input Chat Message');
+//     console.log('>>>>>',msg);
+    
    
-      try {
-          let chat = new Chat({ message: msg.chatMessage, sender:msg.userId, type: msg.type })
+//       try {
+//           let chat = new Chat({ message: msg.chatMessage, sender:msg.userId, type: msg.type, party: msg.partyId})
+         
+//           chat.save((err, doc) => {
+//             // console.log(doc)
+//             if(err) return res.json({ success: false, err })
 
-          chat.save((err, doc) => {
-            // console.log(doc)
-            if(err) return res.json({ success: false, err })
+//             Chat.find({ party: doc.party })
+//             .populate("sender")
+//             .exec((err, doc)=> {
 
-            Chat.find({ "_id": doc._id })
-            .populate("sender")
-            .exec((err, doc)=> {
+//                 return io.emit("Output Chat Message", doc);
+//             })
+//           })
+//       } catch (error) {
+//         console.error(error);
+//       }
+//    })
 
-                return io.emit("Output Chat Message", doc);
-            })
-          })
-      } catch (error) {
-        console.error(error);
-      }
-   })
+// })
 
-})
+ 
+  module.exports = function socket(io,app) {
+    io.on("connection", (socket) => {
+    console.log("Connection socket");
+    
+    socket.on("CONNECT_ROOM",  room  => {
+      socket.join(room);
+      console.log(`Подключен к ${room}`);
+    });
+
+    socket.on("NEW_MESSAGE", (message,  room ) => {
+      console.log(room);
+      socket.to(room).broadcast.emit("NEW_MESSAGE:CLIENT", message);
+      // let chat = new Chat({message: message})
+      
+    });
+    
+    socket.on("WRITE_MESSAGE", (user,room) => {
+        socket.to(room).broadcast.emit("WRITE_MESSAGE:CLIENT", user);
+    });
+    //Disconnect
+    socket.on("disconnect", (socket) => {
+      console.log("disconnect socket");
+    });
+  });
+  }
 
 app.get('/', (req, res)=> {
   res.send('API Running...')

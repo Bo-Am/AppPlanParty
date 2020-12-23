@@ -8,6 +8,9 @@ export const LOGOUT = 'LOGOUT';
 export const AUTH_ERROR = 'AUTH_ERROR';
 export const REGISTER_FAIL = 'REGISTER_FAIL';
 
-// экспортируем названия редюсеров чатов
-export const GET_CHATS = 'GET_CHAT';
-export const AFTER_POST_MESSAGE = 'AFTER_POST_MESSAGE';
+// // экспортируем названия редюсеров чатов
+// export const GET_CHATS = 'GET_CHAT';
+// export const AFTER_POST_MESSAGE = 'AFTER_POST_MESSAGE';
+
+export const SEND_MESSAGE = 'SEND_MESSAGE';
+export const INIT_ROOM = 'INIT_ROOM';

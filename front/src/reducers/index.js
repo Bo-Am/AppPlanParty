@@ -8,7 +8,6 @@ import userPhotoReducer from './userPhotoReducer'
 export default combineReducers({
   alert,
   auth,
-  chatReducer,
+  chat: chatReducer,
   userPhotoReducer
-
 });

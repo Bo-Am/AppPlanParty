@@ -8,9 +8,10 @@ const partySchema = new Schema({
   partyTime: {type: String, required: true},
   partyPrice: {type: String, required: true},
   author: {type: mongoose.Schema.Types.ObjectId, ref: 'user'},
-  members: [{type: mongoose.Schema.Types.ObjectId, ref: 'user'}]
+  members: [{type: mongoose.Schema.Types.ObjectId, ref: 'user'}],
+  chat: [{type: mongoose.Schema.Types.ObjectId, ref: 'chat'}],
 })
 
-const Party = mongoose.model('Party', partySchema)
+const Party = mongoose.model('party', partySchema)
 
 module.exports = Party
