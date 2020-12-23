@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 const Party = require('../models/Party')
-const User = require('../models/User')
+const {User} = require('../models/User')
 
 router
 

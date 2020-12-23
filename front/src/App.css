@@ -627,8 +627,10 @@ button {
 }
 
 .partyRoom {
+  z-index: 0;
   display: flex;
   justify-content: space-between;
+  position: relative;
 }
 
 .fi {
@@ -646,4 +648,15 @@ button {
 .membersStyle {
   margin-top: 5%;
   margin-right: 10%;
+}
+
+.chat {
+  position: absolute;
+  margin-left: 30%;
+  z-index: 1;
+}
+
+#message {
+  width: 100%;
+  /* height: 50px; */
 }

@@ -23,8 +23,8 @@ export default function MyParties() {
 
   return (
     <div>
-      {myParties?.map((el) => <div key={el._id}><Link to={`/myparties/${el._id}`}>{el.partyName}</Link><br/>Дата: {el.partyDate}</div>  )}
-      {memParties?.map((el) => <div key={el._id}><Link to={`/myparties/${el._id}`}>{el.partyName}</Link><br/>Дата: {el.partyDate}</div>  )}
+      {myParties?.map((el) => <div key={el._id}><Link to={`/myparties/${el._id}/chat`}>{el.partyName}</Link><br/>Дата: {el.partyDate}</div>  )}
+      {memParties?.map((el) => <div key={el._id}><Link to={`/myparties/${el._id}/chat`}>{el.partyName}</Link><br/>Дата: {el.partyDate}</div>  )}
     </div>
   )
 }
