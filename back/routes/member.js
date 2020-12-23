@@ -12,12 +12,12 @@ router
         if (!partyMember.members.includes(member.id)) {
             partyMember.members.push(member)
         }
-        // if (!member.invite.includes(partyMember._id)) {
-        //     member.invite.push(partyMember._id)
-        // }
+        if (!member.invite.includes(partyMember._id)) {
+            member.invite.push(partyMember._id)
+        }
         await partyMember.save()
         await member.save()
-        // console.log(partyMember)
+        console.log(partyMember)
         res.status(200)
     })
 
@@ -25,6 +25,7 @@ router
        const {email}  = req.params
         const user = await User.findOne({email})
             .populate('invite')
+        console.log(user)
         res.json(user.invite)
     })
 
