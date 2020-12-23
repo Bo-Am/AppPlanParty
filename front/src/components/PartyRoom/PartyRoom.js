@@ -29,7 +29,7 @@ export default function PartyRoom() {
   const delMember = (e) => {
     e.preventDefault()
     const name = e.target.name
-    fetch('/api/delmember', {
+    fetch('/api/member', {
       method: "DELETE",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({name, id})
@@ -42,7 +42,7 @@ export default function PartyRoom() {
     const {
       email: { value: email },
     } = e.target;
-    fetch("/api/addmember", {
+    fetch("/api/member", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -57,12 +57,11 @@ export default function PartyRoom() {
   const [partyMembers, setPartyMembers] = useState();
 
   useEffect(() => {
-    fetch(`/api/addmember/${id}`)
+    fetch(`/api/member/${id}`)
       .then((res) => res.json())
       .then((data) => setPartyMembers(data));
   }, []);
 
-  console.log(partyMembers);
 
 
   
@@ -94,6 +93,42 @@ export default function PartyRoom() {
       </div>
     </>
   );
+
+  const admin = (
+    <>
+      <p className="lead">Members</p>
+          <ul>
+            {partyMembers?.map((el) => (
+              <li><button onClick={delMember} name={el._id} className="fa fa-trash"/> {el.name}</li>
+            ))}
+          </ul>
+    </>
+  )
+  
+  const members = (
+    <>
+      <p className="lead">Members</p>
+          <ul>
+            {partyMembers?.map((el) => (
+              <li>{el.name}</li>
+            ))}
+          </ul>
+    </>
+  )   
+  
+  const addMemberInput = (
+    <>
+      <form className="form" onSubmit={addMember}>
+            <div className="members">
+              <input placeholder=" enter user email" name="email" />
+              <button className="btn">
+                <i class="fi fas fa-plus-circle"></i>
+              </button>
+            </div>
+          </form>
+    </>
+  )  
+
   return (
     <>
       <div className="partyRoom">
@@ -102,21 +137,10 @@ export default function PartyRoom() {
           {user && author === user._id ? buttons : null}
         </div>
         <div className="membersStyle">
-          <form className="form" onSubmit={addMember}>
-            <div className="members">
-              <input placeholder=" enter user email" name="email" />
-              <button className="btn">
-                <i class="fi fas fa-plus-circle"></i>
-              </button>
-            </div>
-          </form>
-
-          <p className="lead">Members</p>
-          <ul>
-            {partyMembers?.map((el) => (
-              <li><button onClick={delMember} name={el._id} className="fa fa-trash"/> {el.name}</li>
-            ))}
-          </ul>
+        {user && author === user._id ? addMemberInput : null}
+        
+          {user && author === user._id ? admin : members}
+        
         </div>
       </div>
     </>

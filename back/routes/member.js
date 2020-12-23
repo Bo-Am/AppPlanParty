@@ -31,4 +31,24 @@ router
     res.json(partyMembers.members)
   })
 
+ 
+
+  .delete('/', async (req, res) => {
+    const userId = req.body.name
+    const partyId = req.body.id
+
+    const party = await Party.findById(partyId)
+
+    const i = party.members.indexOf(userId)
+    party.members.splice(i, 1)
+    await party.save()
+    console.log(party)
+    res.json(party)
+  })
+
+
+
+
+module.exports = router
+
 module.exports = router
