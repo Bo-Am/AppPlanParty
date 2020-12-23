@@ -11,7 +11,7 @@ const {User} = require('../../models/User')
 
 
 
-const User = require("../../models/User");
+// const User = require("../../models/User");
 
 //@route  POST api/users
 //@desc   Register user

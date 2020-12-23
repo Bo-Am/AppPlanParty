@@ -1,7 +1,7 @@
 // получаем чат на этой ручке
 const express = require('express');
 const router = express.Router();
-const { Chat } = require('../../models/Chat');
+const {Chat}  = require('../../models/Chat');
 const {User} = require('../../models/User');
 
 router.get('/getChats', async (req, res) => {

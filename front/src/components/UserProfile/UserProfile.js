@@ -1,6 +1,5 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import { upload } from "./api";
 import { useHistory, useParams } from "react-router-dom";
 import AddFriend from "../AddFriend/AddFriend";
 

@@ -8,6 +8,7 @@ export default function AddFriend() {
   console.log(localStorage);
 
   const id = useSelector(state => state.auth.user._id)
+
   const addFriend = (e) => {
     e.preventDefault()
     const { email : {value : email}} = e.target

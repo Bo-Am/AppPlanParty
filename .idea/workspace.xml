@@ -2,8 +2,49 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="187779b5-8a54-45f5-9f37-cfb511411841" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/back/models/Chat.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/routes/api/chat.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/routes/invite.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/uploads/1572677414277_Space - 21542.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/uploads/1572677679850_dylan-alcock-7wD_C_xFZ1Q-unsplash.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/uploads/1608538617238_7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/uploads/1608540713358_7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/uploads/1608543177635_IMG_4981.MP4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/uploads/1608543211244_IMG_4981.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/uploads/1608549045191_IMG_4981.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/uploads/1608549377941_minimalizm-stil-fon-art-minimalism-style-background-art-shle.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/uploads/1608644626200_IMG_4981.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/uploads/1608644665074_IMG_4981.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/uploads/1608644711921_IMG_4981.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/uploads/1608655566085_IMG_4981.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/uploads/file-1572676526857" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/uploads/file-1572676810866" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/Config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/actions/chat_actions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/components/ChatPage/ChatPage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/components/ChatPage/Sections/ChatCard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/reducers/chat_reducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/UserProfile/UserProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/UserProfile/UserProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/config/db.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/config/db.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/models/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/models/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/back/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/back/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/routes/addMember.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/routes/addMember.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/routes/api/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/routes/api/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/routes/api/posts.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/routes/api/posts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/routes/api/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/routes/api/profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/routes/api/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/routes/api/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/routes/myParties.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/routes/myParties.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/actions/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/actions/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/actions/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/actions/types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/Invitation/Invitation.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Invitation/Invitation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/layout/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/layout/Navbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/reducers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,6 +53,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/front/package.json" />
   </component>
   <component name="ProjectId" id="1lorscFNvvvWP0dBwHWMXV2UmUg" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -43,7 +87,9 @@
       <updated>1608274496901</updated>
       <workItem from="1608274502916" duration="22026000" />
       <workItem from="1608452660781" duration="22839000" />
-      <workItem from="1608536926289" duration="17097000" />
+      <workItem from="1608536926289" duration="19040000" />
+      <workItem from="1608626057425" duration="22531000" />
+      <workItem from="1608706041076" duration="4830000" />
     </task>
     <servers />
   </component>
