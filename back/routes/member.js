@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const User = require('../models/User')
+const {User} = require('../models/User')
 const Party = require('../models/Party')
 
 router
@@ -35,4 +35,23 @@ router
         res.json(partyMembers.members)
     })
 
+ 
+
+  .delete('/', async (req, res) => {
+    const userId = req.body.name
+    const partyId = req.body.id
+
+    const party = await Party.findById(partyId)
+
+    const i = party.members.indexOf(userId)
+    party.members.splice(i, 1)
+    await party.save()
+    console.log(party)
+    res.json(party)
+  })
+
+
+
+
 module.exports = router
+

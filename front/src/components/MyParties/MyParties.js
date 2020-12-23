@@ -17,12 +17,14 @@ export default function MyParties() {
       .then(data => setparties(data))
     }
   }, [user])
+  const myParties = parties?.parties
   
+  const memParties = parties?.members
 
   return (
     <div>
-      {parties?.map((el) => <div key={el._id}><Link to={`/myparties/${el._id}`}>{el.partyName}</Link><br/>Дата: {el.partyDate}</div>  )}
-      
+      {myParties?.map((el) => <div key={el._id}><Link to={`/myparties/${el._id}`}>{el.partyName}</Link><br/>Дата: {el.partyDate}</div>  )}
+      {memParties?.map((el) => <div key={el._id}><Link to={`/myparties/${el._id}`}>{el.partyName}</Link><br/>Дата: {el.partyDate}</div>  )}
     </div>
   )
 }

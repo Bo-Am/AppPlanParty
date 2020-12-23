@@ -91,7 +91,7 @@ app.use('/api/partyroom', require('./routes/partyRoom'))
 app.use('/api/editparty', require('./routes/editParty'))
 app.use('/api/editprofile', require('./routes/editProfile'))
 app.use('/api/addfriend', require('./routes/addFriend'))
-app.use('/api/addmember', require('./routes/addMember'))
+app.use('/api/member', require('./routes/member'))
 app.use('/api/invite', require('./routes/invite'))
 
 
