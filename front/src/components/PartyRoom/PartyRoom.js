@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useStore } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { Link, useHistory, useParams,useRouteMatch } from "react-router-dom";
 import { ChatPage } from "../ChatPage/ChatPage"
-export default function PartyRoom() {
+const PartyRoom = (props)=> {
   // const userId = useSelector(user => user.auth.user._id)
 
   const user = useSelector((user) => user.auth.user);
@@ -10,7 +10,7 @@ export default function PartyRoom() {
   const [party, setParty] = useState([]);
 
   const history = useHistory();
-
+  const { path, url } = useRouteMatch();
   const { id } = useParams();
 
   useEffect(() => {
@@ -111,7 +111,7 @@ export default function PartyRoom() {
       </ul>
     </>
   );
-  
+
   const members = (
     <>
       <p className="lead">Members</p>
@@ -143,7 +143,6 @@ export default function PartyRoom() {
           {user && partyData}
           {user && author === user._id ? buttons : null}
         </div>
-        
         <div className="membersStyle">
           {user && author === user._id ? addMemberInput : null}
 
@@ -153,3 +152,4 @@ export default function PartyRoom() {
     </>
   );
 }
+export default PartyRoom

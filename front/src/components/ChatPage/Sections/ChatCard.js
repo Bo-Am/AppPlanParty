@@ -31,15 +31,15 @@ function ChatCard(props) {
                                 alt="img"
                             />
                         :
-                        <p>
+                        <p className="userMessage">
                             {props.message}
                         </p>
                 }
-                datetime={
-                    <Tooltip title={moment().format('YYYY-MM-DD HH:mm:ss')}>
-                        <span>{moment().fromNow()}</span>
-                    </Tooltip>
-                }
+                // datetime={
+                //     <Tooltip title={moment().format('YYYY-MM-DD HH:mm:ss')}>
+                //         <span>{moment().fromNow()}</span>
+                //     </Tooltip>
+                // }
             />
         </div>
     )

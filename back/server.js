@@ -49,7 +49,6 @@ app.post("/api/chat/uploadfiles", (req, res) => {
 // подключаем socket
 io.on("connection", socket => {
   console.log('>>');
-  // socket.emit("Output Chat Message", 'doc');
   socket.on("Input Chat Message", async(msg) => {
     console.log('Input Chat Message');
     console.log('>>>>>',msg);

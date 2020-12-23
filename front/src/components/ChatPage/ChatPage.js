@@ -5,6 +5,7 @@ import {io} from "socket.io-client";
 import { connect } from "react-redux";
 // import PropTypes from 'prop-types';
 
+import { DownloadOutlined } from '@ant-design/icons';
 // moment - npm пакет для отображения текущего времени
 import moment from "moment";
 import { getChats, afterPostMessage } from "../../actions/chat_actions"
@@ -12,22 +13,27 @@ import ChatCard from "./Sections/ChatCard";
 // импортируем Dropzone из пакета react-dropzone. Нужен для перетаскивания картинок и видео в поле
 import Dropzone from 'react-dropzone';
 import Axios from 'axios';
+import PartyRoom from '../PartyRoom/PartyRoom';
 
-export class ChatPage extends Component {
-    state = {
+export class ChatPage extends React.Component {
+  
+  constructor(props){
+    super(props)
+    this.state = {
         chatMessage: "",
     }
+  }
 
     componentDidMount() {
       let server = "http://localhost:5000";
-
-        this.props.dispatch(getChats());
+console.log(this.props);
+      this.props.getAllChats()
 
         this.socket = io(server);
 
         // this.socket.emit("Input Chat Message", 'hola bitch')
         this.socket.on("Output Chat Message", messageFromBackEnd => {
-            this.props.dispatch(afterPostMessage(messageFromBackEnd));
+            this.props.getMSGfromBack(messageFromBackEnd);
         })
     }
 
@@ -113,6 +119,8 @@ export class ChatPage extends Component {
     render() {
         return (
             <React.Fragment>
+              <PartyRoom/>
+              <div className="chat">
                 <div>
                     <p style={{ fontSize: '2rem', textAlign: 'center' }}> Let's Chatting</p>
                 </div>
@@ -131,26 +139,29 @@ export class ChatPage extends Component {
                     </div>
 
                     <Row >
-                        <Form layout="inline" onSubmit={this.submitChatMessage}>
+                        <Form layout="inline" onSubmit={this.submitChatMessage} style={{ width: "100%"}}>
                             <Col span={18}>
                                 <Input 
+                                    
                                     id="message"
-                                    prefix='💬'
+                                    // prefix='💬'
                                     placeholder="Come on! Let's start talking!"
                                     type="text"
                                     value={this.state.chatMessage}
                                     onChange={this.handleSearchChange}
                                 />
+                                
                             </Col>
+                            <Button type="primary" style={{ width: '17%' }} onClick={this.submitChatMessage} htmlType="submit">
+                                   Send!
+                                </Button>
                             <Col span={2}>
                                 <Dropzone onDrop={this.onDrop}>
                                     {({ getRootProps, getInputProps }) => (
                                         <section>
                                             <div {...getRootProps()}>
                                                 <input {...getInputProps()} />
-                                                <Button>
-                                                    '📤'
-                                                </Button>
+                                                <Button type="primary" icon={<DownloadOutlined />} size="20px"/>
                                             </div>
                                         </section>
                                     )}
@@ -158,12 +169,13 @@ export class ChatPage extends Component {
                             </Col>
 
                             <Col span={4}>
-                                <Button type="primary" style={{ width: '100%' }} onClick={this.submitChatMessage} htmlType="submit">
+                                {/* <Button type="primary" style={{ width: '100%' }} onClick={this.submitChatMessage} htmlType="submit">
                                    Send!
-                                </Button>
+                                </Button> */}
                             </Col>
                         </Form>
                     </Row>
+                </div>
                 </div>
             </React.Fragment>
         )
@@ -171,11 +183,19 @@ export class ChatPage extends Component {
 }
 
 const mapStateToProps = state => {
-    return {
+
+    return ({
         user: state.auth.user,
         chats: state.chatReducer.chats,
-    }
+    })
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+      getAllChats: () => dispatch(getChats()),
+      getMSGfromBack: (messageFromBackEnd) => dispatch(afterPostMessage(messageFromBackEnd))
+  }
 
-export default connect(mapStateToProps)(ChatPage);
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(ChatPage);
