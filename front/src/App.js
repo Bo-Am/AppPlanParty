@@ -42,7 +42,9 @@ const App = () => {
     <Fragment>
       <Navbar/>
       <Route exact path='/' component={Landing}/>
-      <PrivateRoute exact path="/myparties/:id" component={PartyRoom}/>
+      {/* <PrivateRoute exact path="/myparties/:id" component={PartyRoom}/> */}
+      <PrivateRoute path="/myparties/:id/chat" component={ChatPage}/>
+
       <section className="container">
         <Alert/>
         <Switch>
@@ -51,6 +53,7 @@ const App = () => {
           <Route exact path="/newparty" component={NewParty}/>
           <Route exact path="/profile" component={UserProfile}/>
           <PrivateRoute exact path="/myparties" component={MyParties}/>
+          {/* <PrivateRoute path="/myparties/:id/chat" component={ChatPage}/> */}
           <PrivateRoute exact path="/chat" component={ChatPage}/>
           <PrivateRoute exact path="/myfriends" component={AddFriend}/>
           <PrivateRoute exact path="/editform/:id" component={EditPartyForm}/>
