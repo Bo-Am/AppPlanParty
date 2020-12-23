@@ -20,7 +20,6 @@ export default function MyParties() {
   const myParties = parties?.parties
   
   const memParties = parties?.members
-  console.log(memParties)
 
   return (
     <div>

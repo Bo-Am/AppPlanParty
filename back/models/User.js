@@ -1,6 +1,7 @@
-const mongoose = require('mongoose');
+mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const UserSchema = new mongoose.Schema({
+const userSchema = mongoose.Schema({
   name:{
     type:String,
     required: true
@@ -21,8 +22,12 @@ const UserSchema = new mongoose.Schema({
     type: Date,
     default:Date.now
   },
-  friends: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}]
+  friends: [{type: mongoose.Schema.Types.ObjectId, ref: 'user'}],
+  invite:[{type: mongoose.Schema.Types.ObjectId, ref: 'Party'}]
 
 });
 
-module.exports = User = mongoose.model('User', UserSchema)
+const User = mongoose.model('user', userSchema)
+// module.exports.User = mongoose.model('user', UserSchema)
+module.exports = {User}
+

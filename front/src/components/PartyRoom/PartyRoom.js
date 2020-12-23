@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useStore } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-
+import { ChatPage } from "../ChatPage/ChatPage"
 export default function PartyRoom() {
   // const userId = useSelector(user => user.auth.user._id)
 
@@ -27,15 +27,14 @@ export default function PartyRoom() {
   };
 
   const delMember = (e) => {
-    e.preventDefault()
-    const name = e.target.name
-    fetch('/api/member', {
+    e.preventDefault();
+    const name = e.target.name;
+    fetch("/api/member", {
       method: "DELETE",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({name, id})
-    }).then((res) => history.push(`/myparties/${id}`))
-  }
-
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, id }),
+    }).then((res) => history.push(`/myparties/${id}`));
+  };
 
   const addMember = (e) => {
     e.preventDefault();
@@ -62,22 +61,18 @@ export default function PartyRoom() {
       .then((data) => setPartyMembers(data));
   }, []);
 
-
-
-  
-
   const author = party.author;
 
   const buttons = (
     <>
       <button className="btn btn-primary" onClick={deleteParty}>
-        <i class="fa fa-trash"></i>
+        <i className="fa fa-trash"></i>
       </button>
       <button
         className="btn btn-primary"
         onClick={() => history.push(`/editform/${id}`)}
       >
-        <i class="fa fa-edit"></i>
+        <i className="fa fa-edit"></i>
       </button>
       <br />
     </>
@@ -97,37 +92,45 @@ export default function PartyRoom() {
   const admin = (
     <>
       <p className="lead">Members</p>
-          <ul>
-            {partyMembers?.map((el) => (
-              <li><button onClick={delMember} name={el._id} className="fa fa-trash"/> {el.name}</li>
-            ))}
-          </ul>
+      <ul>
+        {partyMembers?.map((el) => (
+          <li>
+            <button
+              onClick={delMember}
+              key={el.avatar}
+              name={el._id}
+              className="fa fa-trash"
+            />
+            {el.name}
+          </li>
+        ))}
+      </ul>
     </>
-  )
+  );
   
   const members = (
     <>
       <p className="lead">Members</p>
-          <ul>
-            {partyMembers?.map((el) => (
-              <li>{el.name}</li>
-            ))}
-          </ul>
+      <ul>
+        {partyMembers?.map((el) => (
+          <li key={el.email}>{el.name}</li>
+        ))}
+      </ul>
     </>
-  )   
-  
+  );
+
   const addMemberInput = (
     <>
       <form className="form" onSubmit={addMember}>
-            <div className="members">
-              <input placeholder=" enter user email" name="email" />
-              <button className="btn">
-                <i class="fi fas fa-plus-circle"></i>
-              </button>
-            </div>
-          </form>
+        <div className="members">
+          <input placeholder=" enter user email" name="email" />
+          <button className="btn">
+            <i className="fi fas fa-plus-circle"></i>
+          </button>
+        </div>
+      </form>
     </>
-  )  
+  );
 
   return (
     <>
@@ -136,11 +139,11 @@ export default function PartyRoom() {
           {user && partyData}
           {user && author === user._id ? buttons : null}
         </div>
+        
         <div className="membersStyle">
-        {user && author === user._id ? addMemberInput : null}
-        
+          {user && author === user._id ? addMemberInput : null}
+
           {user && author === user._id ? admin : members}
-        
         </div>
       </div>
     </>
