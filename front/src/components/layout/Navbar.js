@@ -16,6 +16,7 @@ const Navbar = ({auth: {isAuthenticated, loading}, logout}) => {
             <Link to='/invitation'>Invitation</Link>
           <Link to="/myfriends">My friends</Link>
           <Link to="/myparties">My parties</Link>
+          <Link to="/chat">Chat</Link>
           <a onClick ={logout} href="/">
             <span className="hide-sm">Log Out</span></a>
         </li> 

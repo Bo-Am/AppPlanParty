@@ -5,7 +5,6 @@ const Invitation = () => {
 
     const [invite, setInvite] = React.useState()
     const user = useSelector(state => state.auth.user)
-    // const email = useSelector(state => state.auth.user.email)
 
     React.useEffect(() =>{
         if(user){
@@ -15,27 +14,42 @@ const Invitation = () => {
         }
     },[])
 
+
     // const acceptInvite = (e) => {
     //     e.preventDefault()
-    // if(email){
-    //     fetch('/api/addmember/invite', {
-    //         method: 'PUT',
-    //         headers: {'Content-Type' : 'application/json'},
-    //         body: JSON.stringify({
-    //             email,
+    //     if(user.email){
+    //         fetch('/api/invite',
+    //             {
+    //             method: 'PUT',
+    //             headers: {'Content-Type' : 'application/json'},
+    //             body: JSON.stringify({
+    //                 email: user.email,
+    //             })
     //         })
-    //     })
-    //         .then(res => res.json())
-    //         .then(name => console.log(name))
+    //             .then(res => res.json())
+    //             .then(name => console.log(name))
+    //     }
     // }
-    // }
+
+    const deleteInvite = () => {
+        return fetch(`/api/invite/${user.id}`, {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json'}
+        })
+            // .then(res => history.push('/invitation'))
+    }
 
     return (
         <>
             <h1>Inviting your party!!!</h1>
             {invite?.map(el =>(
                 <>
-                    <button type="submit">Agree</button><button>Disagree</button>
+                    <form>
+                        <button type="submit" >Agree</button>
+                    </form>
+                    <form >
+                        <button>Disagree</button>
+                    </form>
                     <div> Party name:{el.partyName}</div>
                     <div>When: {el.partyDate}</div>
                 </>

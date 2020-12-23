@@ -7,3 +7,7 @@ export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT = 'LOGOUT';
 export const AUTH_ERROR = 'AUTH_ERROR';
 export const REGISTER_FAIL = 'REGISTER_FAIL';
+
+// экспортируем названия редюсеров чатов
+export const GET_CHATS = 'GET_CHAT';
+export const AFTER_POST_MESSAGE = 'AFTER_POST_MESSAGE';
