@@ -3,14 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="187779b5-8a54-45f5-9f37-cfb511411841" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/routes/addFriend.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/routes/addFriend.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/routes/editProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/routes/editProfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/routes/invite.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/routes/invite.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/routes/member.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/routes/member.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/routes/myParties.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/routes/myParties.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/routes/parties.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/routes/parties.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/Invitation/Invitation.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/Invitation/Invitation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/PartyRoom/PartyRoom.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/PartyRoom/PartyRoom.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +48,7 @@
       <workItem from="1608536926289" duration="19040000" />
       <workItem from="1608626057425" duration="22531000" />
       <workItem from="1608706041076" duration="4830000" />
-      <workItem from="1608715160872" duration="8882000" />
+      <workItem from="1608715160872" duration="10821000" />
     </task>
     <servers />
   </component>
