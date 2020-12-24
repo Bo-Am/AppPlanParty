@@ -85,10 +85,13 @@ const PartyRoom = (props)=> {
         <div>Adress: {party.partyPlace}</div>
         <div>Date: {party.partyDate}</div>
         <div>Time: {party.partyTime}</div>
+        <div>Price: {party.partyPrice}</div>
       </div>
     </>
   );
 
+
+  const [visible, setVisible] = useState(true)
   const admin = (
     <>
       <p className="lead">Members</p>
@@ -102,6 +105,7 @@ const PartyRoom = (props)=> {
               className="fa fa-trash"
             />
             {el.name}
+            {visible ? <button onClick={()=>{setVisible((state)=>!state)} }>Оплатил</button> : <div>✅</div>}
           </li>
         ))}
       </ul>
@@ -113,7 +117,7 @@ const PartyRoom = (props)=> {
       <p className="lead">Members</p>
       <ul>
         {partyMembers?.map((el) => (
-          <li key={el.email}>{el.name}</li>
+            <li key={el.email}>{el.name}</li>
         ))}
       </ul>
     </>
