@@ -1,14 +1,17 @@
 import React from 'react';
 import {useSelector} from "react-redux";
+import { useHistory } from "react-router-dom";
+
 
 const Invitation = () => {
-
+    const history = useHistory()
     const [invite, setInvite] = React.useState()
     const user = useSelector(state => state.auth.user)
-
+    // console.log(user.email)
     React.useEffect(() =>{
         if(user){
             fetch(`/api/member/email/${user.email}`)
+            fetch(`/api/invite/${user.email}`)
                 .then(res => res.json())
                 .then(inviteParty => {
                   setInvite(inviteParty)
@@ -17,10 +20,14 @@ const Invitation = () => {
     },[])
 
     const deleteInvite = () => {
-        return fetch(`/api/invite/${user.id}`, {
-            method: 'DELETE',
-            headers: { 'Content-Type': 'application/json'}
-        })
+        if(user){
+            return fetch(`/api/invite/${user._id}`, {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json'}
+            })
+                .then(res => history.push('/invitation'))
+        }
+
     }
 
     return (
@@ -31,7 +38,7 @@ const Invitation = () => {
                     <form>
                         <button type="submit" >Agree</button>
                     </form>
-                    <form >
+                    <form onSubmit={deleteInvite} >
                         <button>Disagree</button>
                     </form>
                     <div> Party name:{el.partyName}</div>
