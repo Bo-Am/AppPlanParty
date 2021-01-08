@@ -23,11 +23,10 @@ const userSchema = mongoose.Schema({
     default:Date.now
   },
   friends: [{type: mongoose.Schema.Types.ObjectId, ref: 'user'}],
-  invite:[{type: mongoose.Schema.Types.ObjectId, ref: 'Party'}]
-
+  invite:[{type: mongoose.Schema.Types.ObjectId, ref: 'party'}]
 });
 
 const User = mongoose.model('user', userSchema)
-// module.exports.User = mongoose.model('user', UserSchema)
+
 module.exports = {User}
 

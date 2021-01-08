@@ -24,6 +24,7 @@ router
       partyDate,
       partyTime,
       partyPrice,
+      partyRemainder: +partyPrice,
       author: user._id
     })
     await party.save()

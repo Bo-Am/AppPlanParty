@@ -20,92 +20,39 @@ const io = require('socket.io')(server, {
 //Connect Database
 connectDB();
 
-//init middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 
-// объявляем хранилище, куда подключаем с помощью multer
-let storage = multer.diskStorage({
-  // destination - это ключ, который указывает, куда сохранять файлы
-  destination: function (req, file, cb) {
-    cb(null, 'uploads/')
-  },
-  // filename - это ключ, который указывает, как сохранять
-  filename: function (req, file, cb) {
-    cb(null, `${Date.now()}_${file.originalname}`)
-  },
-})
- 
-let upload = multer({ storage: storage }).single("file");
-// добавляем с помощью запроса POST, сначала проверяем, авторизован ли отправитель
-app.post("/api/chat/uploadfiles", (req, res) => {
-  upload(req, res, err => {
-    if(err) {
-      return res.json({ success: false, err })
-    }
-    return res.json({ success: true, url: res.req.file.path });
-  })
-});
-// подключаем socket
-// io.on("connection", socket => {
-//   console.log('>>');
-//   socket.on("CONNECT_ROOM",  room  => {
-//     socket.join(room);
-//     console.log(`Подключен к ${room}`);
-//   });
-//   socket.on("Input Chat Message", async(msg) => {
-//     console.log('Input Chat Message');
-//     console.log('>>>>>',msg);
-    
-   
-//       try {
-//           let chat = new Chat({ message: msg.chatMessage, sender:msg.userId, type: msg.type, party: msg.partyId})
-         
-//           chat.save((err, doc) => {
-//             // console.log(doc)
-//             if(err) return res.json({ success: false, err })
+io.on("connection", (socket) => {
+  console.log("Connection socket");
 
-//             Chat.find({ party: doc.party })
-//             .populate("sender")
-//             .exec((err, doc)=> {
-
-//                 return io.emit("Output Chat Message", doc);
-//             })
-//           })
-//       } catch (error) {
-//         console.error(error);
-//       }
-//    })
-
-// })
-
- 
-  module.exports = function socket(io,app) {
-    io.on("connection", (socket) => {
-    console.log("Connection socket");
-    
-    socket.on("CONNECT_ROOM",  room  => {
-      socket.join(room);
-      console.log(`Подключен к ${room}`);
+  socket.on("CONNECT_ROOM", async room  => {
+    socket.join(room);
+    console.log(`>>>>>>>>> Подключен к ${room}`);
+    socket.emit('initMSG',await Chat.find({room}).populate('user'))
     });
 
-    socket.on("NEW_MESSAGE", (message,  room ) => {
-      console.log(room);
-      socket.to(room).broadcast.emit("NEW_MESSAGE:CLIENT", message);
-      // let chat = new Chat({message: message})
-      
-    });
-    
-    socket.on("WRITE_MESSAGE", (user,room) => {
-        socket.to(room).broadcast.emit("WRITE_MESSAGE:CLIENT", user);
-    });
-    //Disconnect
-    socket.on("disconnect", (socket) => {
-      console.log("disconnect socket");
-    });
+  socket.on("NEW_MESSAGE",  async ([ room, message, user]) => {
+    socket.to(room).broadcast.emit("NEW_MESSAGE:CLIENT", room, message, user);
+    let chat = await new Chat({room, message, user: user._id}).populate('user')
+    await chat.save()
   });
-  }
+  
+  socket.on('leaveRoom', (room) =>{
+    socket.leave(room);
+    console.log('Room leaved')
+  })
+
+  socket.on("WRITE_MESSAGE", (room, user) => {
+      socket.to(room).broadcast.emit("WRITE_MESSAGE:CLIENT", user);
+  });
+  
+  //Disconnect
+  socket.on("disconnect", (socket) => {
+    console.log("disconnect socket");
+  });
+});
 
 app.get('/', (req, res)=> {
   res.send('API Running...')
@@ -115,8 +62,6 @@ app.get('/', (req, res)=> {
 app.use('/api/chat', require('./routes/api/chat'))
 app.use('/api/users', require('./routes/api/users'))
 app.use('/api/auth', require('./routes/api/auth'))
-app.use('/api/profile', require('./routes/api/profile'))
-app.use('/api/posts', require('./routes/api/posts'))
 app.use('/api/newparty', require('./routes/parties'))
 app.use('/api/myparties', require('./routes/myParties'))
 app.use('/api/partyroom', require('./routes/partyRoom'))
@@ -125,10 +70,6 @@ app.use('/api/editprofile', require('./routes/editProfile'))
 app.use('/api/addfriend', require('./routes/addFriend'))
 app.use('/api/member', require('./routes/member'))
 app.use('/api/invite', require('./routes/invite'))
-
-
-
-
 
 const PORT = process.env.PORT || 5000
 

@@ -7,6 +7,7 @@ const partySchema = new Schema({
   partyDate: {type: String, required: true},
   partyTime: {type: String, required: true},
   partyPrice: {type: String, required: true},
+  partyRemainder: {type: Number, required: true},
   author: {type: mongoose.Schema.Types.ObjectId, ref: 'user'},
   members: [{type: mongoose.Schema.Types.ObjectId, ref: 'user'}],
   chat: [{type: mongoose.Schema.Types.ObjectId, ref: 'chat'}],

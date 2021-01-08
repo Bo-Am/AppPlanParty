@@ -17,5 +17,4 @@ router
     res.json()
   })
 
-  
   module.exports = router

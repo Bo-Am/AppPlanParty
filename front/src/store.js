@@ -4,14 +4,7 @@ import thunk from 'redux-thunk';
 import rootReducer from './reducers'
 
 const initialState = {};
-const middleware = [thunk];
-// const preloadedState = window.localStorage.getItem('state') || '{"isAuth" : true}'
+const middleware = [thunk];'
 
 const store = createStore(rootReducer, initialState, composeWithDevTools(applyMiddleware(...middleware)));
-
-// store.subscribe(()=>{
-//     const state = store.getState()
-//     window.localStorage.setItem('state', JSON.stringify(state))
-// })
-
 export default store;

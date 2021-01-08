@@ -2,7 +2,6 @@ const express = require('express')
 const router = express.Router()
 
 const Party = require('../models/Party')
-// const User = require('../models/User')
 
 router
 
@@ -11,8 +10,6 @@ router
     const parties = await Party.find({author: id})
     const members = await Party.find({members: id})
     res.json({parties, members})
-    console.log(id);
-    console.log(members);
   })
 
   module.exports = router

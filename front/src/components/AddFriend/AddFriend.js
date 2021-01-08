@@ -3,8 +3,6 @@ import { useSelector } from 'react-redux'
 
 export default function AddFriend() {
 
-  // const [friends, setFriends] = useState()
-  
   console.log(localStorage);
 
   const id = useSelector(state => state.auth.user._id)
@@ -22,9 +20,7 @@ export default function AddFriend() {
      })
      .then(res => res.json())
      .then(name => localStorage.setItem('friends', name))
-    // .then(name => console.log(name))
   }
-  // console.log(name);
 
 
   return (

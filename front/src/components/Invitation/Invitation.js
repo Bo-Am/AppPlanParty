@@ -8,35 +8,19 @@ const Invitation = () => {
 
     React.useEffect(() =>{
         if(user){
-            fetch(`/api/addmember/email/${user.email}`)
+            fetch(`/api/member/email/${user.email}`)
                 .then(res => res.json())
-                .then(inviteParty => setInvite(inviteParty))
+                .then(inviteParty => {
+                  setInvite(inviteParty)
+                })
         }
     },[])
-
-
-    // const acceptInvite = (e) => {
-    //     e.preventDefault()
-    //     if(user.email){
-    //         fetch('/api/invite',
-    //             {
-    //             method: 'PUT',
-    //             headers: {'Content-Type' : 'application/json'},
-    //             body: JSON.stringify({
-    //                 email: user.email,
-    //             })
-    //         })
-    //             .then(res => res.json())
-    //             .then(name => console.log(name))
-    //     }
-    // }
 
     const deleteInvite = () => {
         return fetch(`/api/invite/${user.id}`, {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json'}
         })
-            // .then(res => history.push('/invitation'))
     }
 
     return (

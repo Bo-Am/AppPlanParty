@@ -1,10 +1,10 @@
 import React from "react";
-// import styles from "./Message.module.css";
-function ChatCard({ oneMes, username }) {
+function ChatCard(props) {
+  const {user, oneMes} = props;
   return (
-    <div>
-      <div>{username}:</div>
-      <div>{oneMes}</div>
+    <div className="message-box">
+      <div className="message-box_name">{user.name}:</div>
+      <div className="message-box_text">{oneMes}</div>
     </div>
   );
 }

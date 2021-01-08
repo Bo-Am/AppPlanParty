@@ -15,11 +15,6 @@ const {User} = require('../../models/User')
 router.get('/', auth, async (req,res)=> {
   try{
     const user = await User.findById(req.user.id).select('-password');
-
-    // localStorage.setItem('userName', JSON.stringify(user))
-    // const raw = localStorage.getItem('userName')
-    // const user1 = JSON.parse(raw)
-    // console.log(user1)
     res.json(user)
   }catch(err){
     console.error(err.message)
@@ -33,7 +28,6 @@ router.get('/', auth, async (req,res)=> {
 //@desc   Authenticate user & get token
 //@acess  Public
 router.post('/', [
-  //check validatin form
     check('email', 'Please include a valid email')
     .isEmail(),
     check('password', 'Password is required').exists()
@@ -59,7 +53,6 @@ router.post('/', [
     if(!isMatch){
       return res.status(400).json({ errors: [{msg:'Invalide Credentials'}] })
     }
-
 
     const payload = {
       user:{
